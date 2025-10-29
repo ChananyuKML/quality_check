@@ -160,13 +160,17 @@ reprojected_image = cv2.add(foreground, background_hole)
 window_name = "Extracted Object"
 cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
 # --- 5. Display the results ---
-cv2.imshow(window_name, reprojected_image)
+print("\n--- Mask Eraser Tool ---")
+print("Click and drag to ERASE parts of the mask.")
+print("Press 's' to save the new mask.")
+print("Press 'q' to quit.")
 
-print("Press any key to close...")
-key = cv2.waitKey(1) & 0xFF
-if key == ord('q'):
-    break
-elif key == ord('s'):
-    cv2.imwrite("mask_extracted.png", mask)
-    print("\nSuccessfully saved 'mask_extracted.png'!")
+while True:
+    cv2.imshow(window_name, reprojected_image)
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):
+        break
+    elif key == ord('s'):
+        cv2.imwrite("mask_extracted.png", reprojected_image)
+        print("\nSuccessfully saved 'mask_extracted.png'!")
 cv2.destroyAllWindows()
