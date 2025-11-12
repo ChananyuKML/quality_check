@@ -25,6 +25,8 @@ python src/reprojection.py --img <your-image-name>
 ```
 After execute the code, the input image will be shown. Corners of the side that will be inspected are needed to be identified by left-clicking on each corner of an object in image. The order of clicking need to be the same as sequence below
 
+![screenshot](img/pc.jpg)
+
 ```bash
 top-left > top-right > bottom-right > bottom-left
 ```
