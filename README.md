@@ -18,19 +18,19 @@ Create environment for containing necessary dependencies
   pip install torch torchvision opencv-python Pillow
 ```
 ## Usage
-
+![screenshot](img/pc.jpg)
 ### Reprojection
+
 ```bash
 python src/reprojection.py --img <your-image-name>
 ```
 After execute the code, the input image will be shown. Corners of the side that will be inspected are needed to be identified by left-clicking on each corner of an object in image. The order of clicking need to be the same as sequence below
 
-![screenshot](img/pc.jpg)
-
 ```bash
 top-left > top-right > bottom-right > bottom-left
 ```
 Then the output of reprojected image will be saved as front_view_ourput.jpg. The side in file name can be specifed by add an option to the executing command line.
+![screenshot](front_view_output.jpg)
 
 ```bash
 python src/reprojection.py --img <your-image-name> --side <your-reprojected-side>
