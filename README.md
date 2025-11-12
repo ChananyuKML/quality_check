@@ -38,9 +38,9 @@ python src/reprojection.py --img <your-image-name> --side <your-reprojected-side
 ### Similarity Comparision
 After the object face in image was reprojected, the image will be compared to the reference object to determine completeness of object in an image.
 ![screenshot](front_view_output.jpg)
-![screenshot](img\front_ref.png)
+![screenshot](img/front_ref.png)
 
 ```bash
 python src/similarity_vit.py <path-to-image> <path-to-reference-image>
 ```
-![screenshot](test_output\sim_output.png)
+![screenshot](img/sim_output.png)
