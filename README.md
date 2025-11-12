@@ -30,7 +30,6 @@ After execute the code, the input image will be shown. Corners of the side that 
 top-left > top-right > bottom-right > bottom-left
 ```
 Then the output of reprojected image will be saved as front_view_ourput.jpg. The side in file name can be specifed by add an option to the executing command line.
-![screenshot](front_view_output.jpg)
 
 ```bash
 python src/reprojection.py --img <your-image-name> --side <your-reprojected-side>
@@ -38,7 +37,10 @@ python src/reprojection.py --img <your-image-name> --side <your-reprojected-side
 
 ### Similarity Comparision
 After the object face in image was reprojected, the image will be compared to the reference object to determine completeness of object in an image.
+![screenshot](front_view_output.jpg)
+![screenshot](img\front_ref.png)
 
 ```bash
-python src/similarity_vit.py <path-to-image> <path-to-reference>
+python src/similarity_vit.py <path-to-image> <path-to-reference-image>
 ```
+![screenshot](test_output\sim_output.png)

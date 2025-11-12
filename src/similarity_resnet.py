@@ -123,12 +123,12 @@ if __name__ == "__main__":
     # Add three required positional arguments for the image paths
     parser.add_argument("image1", help="Path to the first image file.")
     parser.add_argument("image2", help="Path to the second image file.")
-    parser.add_argument("image3", help="Path to the third image file.")
+
     
     # Parse the command-line arguments
     args = parser.parse_args()
         
-    print(f"Comparing '{args.image1}', '{args.image2}', and '{args.image3}'...")
+    print(f"Comparing '{args.image1}', '{args.image2}'...")
 
     # Initialize the feature extractor model
     feature_extractor = FeatureExtractor()
@@ -137,21 +137,15 @@ if __name__ == "__main__":
     print("Extracting features...")
     features1 = get_image_features(args.image1, feature_extractor)
     features2 = get_image_features(args.image2, feature_extractor)
-    features3 = get_image_features(args.image3, feature_extractor)
+
     
     # Check if all features were extracted successfully
-    if features1 is not None and features2 is not None and features3 is not None:
+    if features1 is not None and features2 is not None:
         # Calculate and print the similarity for all pairs
         print("\n--- Similarity Scores ---")
         
         sim_1_2 = calculate_similarity(features1, features2)
         print(f"  (Image 1 vs Image 2): {sim_1_2:.4f}")
-        
-        sim_1_3 = calculate_similarity(features1, features3)
-        print(f"  (Image 1 vs Image 3): {sim_1_3:.4f}")
-        
-        sim_2_3 = calculate_similarity(features2, features3)
-        print(f"  (Image 2 vs Image 3): {sim_2_3:.4f}")
         
     else:
         print("\nCould not calculate similarity due to errors processing one or more images.")
