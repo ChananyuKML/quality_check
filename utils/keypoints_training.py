@@ -68,7 +68,7 @@ def train(train_loader, num_points, epochs, device):
 		correct = 0
 		iter = 1
         
-        from image in train_loader:
+        for image in train_loader:
             optimizer.zero_grad()
             pred_keypoints = model(batch_images)
             loss = criterion(pred_keypoints, true_keypoints)
