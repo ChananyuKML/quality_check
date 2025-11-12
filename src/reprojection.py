@@ -72,6 +72,6 @@ pts_dst = np.array([
 
 matrix = cv2.getPerspectiveTransform(pts_src, pts_dst)
 warped_image = cv2.warpPerspective(img, matrix, (width, height))
-cv2.imwrite(f'{args.side}_view_output.jpg', warped_image)
-print(f'save image at {args.side}_view_output.jpg')
+cv2.imwrite(f'{args.side}_output.jpg', warped_image)
+print(f'save image at {args.side}_output.jpg')
 
