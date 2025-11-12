@@ -41,6 +41,7 @@ python src/reprojection.py --img <your-image-name> --side <your-reprojected-side
 
 ### Similarity Comparision
 Once the images are aligned, the tool performs a detailed, feature-based comparison to find discrepancies. Instead of simple pixel-matching, it uses a deep learning model to "understand" the content of each hole. Comparing two images by extracting features in an image using vision transformer(ViT) then compare the extracted vectors with cosine similarity.
+
 ![screenshot](img/front_view_output.jpg)
 ![screenshot](img/front_ref.jpg)
 
