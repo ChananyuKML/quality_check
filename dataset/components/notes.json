@@ -1,0 +1,41 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "DP"
+    },
+    {
+      "id": 1,
+      "name": "HDMI"
+    },
+    {
+      "id": 2,
+      "name": "LAN"
+    },
+    {
+      "id": 3,
+      "name": "USB-A"
+    },
+    {
+      "id": 4,
+      "name": "USB-C"
+    },
+    {
+      "id": 5,
+      "name": "jack"
+    },
+    {
+      "id": 6,
+      "name": "micro"
+    },
+    {
+      "id": 7,
+      "name": "power"
+    }
+  ],
+  "info": {
+    "year": 2025,
+    "version": "1.0",
+    "contributor": "Label Studio"
+  }
+}

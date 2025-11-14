@@ -1,0 +1,8 @@
+DP
+HDMI
+LAN
+USB-A
+USB-C
+jack
+micro
+power
