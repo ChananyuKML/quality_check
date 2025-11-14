@@ -61,4 +61,4 @@ python src/read_box.py <image-to-test> --ref <path-to-ref-image> --boxes <path-t
 ![screenshot](img/reference_box.png)
 ![screenshot](img/reprojected_box.png)
 ### Similarity Scores
-![screenshot](img/Pasted image.png)
+![screenshot](img/similar_scores.png)
