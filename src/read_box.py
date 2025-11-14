@@ -73,7 +73,7 @@ parser = argparse.ArgumentParser(description="A simple script demonstrating argp
 
 parser.add_argument('--boxes', type=str, default="dataset/components/labels/1377c66d-front_ref.txt", help='Path to label file')
 parser.add_argument('--ref', type=str, default="dataset/components/images/1377c66d-front_ref.jpg", help='Path to label file')
-parser.add_argument('--img', type=str, default="img/front_view_output.jpg", help='Path to label file')
+parser.add_argument('img', type=str, default="img/front_view_output.jpg", help='Path to label file')
 args = parser.parse_args()
 
 ref_img = Image.open(args.ref).convert('RGB')
