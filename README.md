@@ -54,8 +54,8 @@ python src/similarity_vit.py <path-to-image> <path-to-reference-image>
 In the previous process, whole image have been reprojected and compare to the reference. To compare the specific area in the image, user need to create bounding bom data on the reference image using label studio(yolo format), then apply the box similaryty comparison using this command.
 
 ```bash
-python src/read_box.py <image-to-test> --ref <path-to-ref-image> --boxes <path-to-label-file>```
-
+python src/read_box.py <image-to-test> --ref <path-to-ref-image> --boxes <path-to-label-file>
+```
 
 ### Reference-box VS Reprojected-box
 ![screenshot](img/reference_box.png)
