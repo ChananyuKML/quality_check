@@ -6,7 +6,7 @@ from PIL import Image
 import torch.nn.functional as F
 import sys
 import argparse # Import argparse
-from utils.transform import CustomFeatureTransform
+from utils.transform import CustomFeatureTransform, crop_objects
 
 class FeatureExtractor(nn.Module):
     """

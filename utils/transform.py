@@ -8,6 +8,7 @@ import sys
 import argparse # Import argparse
 import cv2
 import numpy as np
+from typing import List, Tuple
 
 class CustomFeatureTransform(object):
     def __init__(self, canny_threshold1=50, canny_threshold2=150,
@@ -47,3 +48,15 @@ class CustomFeatureTransform(object):
         tensor = tensor.permute(2, 0, 1).unsqueeze(0)
         
         return tensor
+
+def crop_objects(image: np.ndarray, boxes: List[Tuple[int, int, int, int, int]]) -> List[np.ndarray]:
+    """Crops regions defined by bounding boxes from the original image."""
+    cropped_images = []
+    
+    for class_id, x_min, y_min, x_max, y_max in boxes:
+        x_min, y_min, x_max, y_max = int(x_min), int(y_min), int(x_max), int(y_max)
+        cropped_img = image[y_min:y_max, x_min:x_max]
+        if cropped_img.size > 0:
+            cropped_images.append(cropped_img)
+    
+    return cropped_images
