@@ -6,6 +6,7 @@ from PIL import Image
 import torch.nn.functional as F
 import sys
 import argparse # Import argparse
+from utils.transform import CustomFeatureTransform
 
 class FeatureExtractor(nn.Module):
     """
@@ -51,7 +52,7 @@ def preprocess_image(image_path):
     # 4. Normalize using ImageNet mean and standard deviation
     transform = transforms.Compose([
         transforms.Resize((224,224)),
-        transforms.ToTensor(),
+        CustomFeatureTransform(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
     ])
@@ -62,7 +63,8 @@ def preprocess_image(image_path):
         # Apply the transformations
         image_tensor = transform(image)
         # Add a batch dimension (B, C, H, W) -> (1, C, H, W)
-        return image_tensor.unsqueeze(0)
+        return image_tensor
+    
     except FileNotFoundError:
         print(f"Error: Image file not found at {image_path}", file=sys.stderr)
         return None
