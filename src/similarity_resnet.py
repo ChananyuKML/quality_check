@@ -99,21 +99,7 @@ def get_image_features(image_path, model):
     return features
 
 def calculate_similarity(features1, features2):
-    """
-    Calculates the cosine similarity between two feature vectors.
-    
-    Args:
-        features1 (torch.Tensor): The first feature vector (shape [1, N]).
-        features2 (torch.Tensor): The second feature vector (shape [1, N]).
-        
-    Returns:
-        float: The cosine similarity score (between -1 and 1).
-    """
-    # Use torch.nn.functional.cosine_similarity
-    # dim=1 to compute similarity across the feature dimension
     similarity_score = F.cosine_similarity(features1, features2, dim=1)
-    
-    # .item() extracts the scalar value from the tensor
     return similarity_score.item()
 
 # --- Main execution ---
