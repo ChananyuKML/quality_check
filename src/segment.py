@@ -174,3 +174,32 @@ while True:
         cv2.imwrite("mask_extracted.png", reprojected_image)
         print("\nSuccessfully saved 'mask_extracted.png'!")
 cv2.destroyAllWindows()
+
+def segment():
+    #---------------Import Image---------------#
+    image = Image.open('test_output/pc.jpg')
+    img = cv2.imread('test_output/pc.jpg')
+    image = np.array(image.convert("RGB"))
+
+    #---------------predict mask---------------#
+    sam2_checkpoint = "lib/sam2/checkpoints/sam2.1_hiera_tiny.pt"
+    model_cfg = "configs/sam2.1/sam2.1_hiera_t.yaml"
+    sam2_model = build_sam2(model_cfg, sam2_checkpoint, device=device)
+
+    predictor = SAM2ImagePredictor(sam2_model)
+    predictor.set_image(image)
+
+    input_point = np.array([[434, 543]])
+    input_label = np.array([1])
+
+    masks, scores, logits = predictor.predict(
+        point_coords=input_point,
+        point_labels=input_label,
+        multimask_output=True,
+    )
+    sorted_ind = np.argsort(scores)[::-1]
+    masks = masks[sorted_ind]
+    scores = scores[sorted_ind]
+    logits = logits[sorted_ind]
+    masks.shape  # (number_of_masks) x H x W
+    mask = masks[0].astype(np.uint8) * 255

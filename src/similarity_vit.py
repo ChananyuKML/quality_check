@@ -8,6 +8,7 @@ import sys
 import argparse # Import argparse
 from utils.transform import CustomFeatureTransform
 
+
 class FeatureExtractor(nn.Module):
     """
     A class to extract features using a pre-trained Vision Transformer (ViT-B/16).
