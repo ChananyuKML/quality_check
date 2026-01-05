@@ -62,3 +62,15 @@ python src/read_box.py <image-to-test> --ref <path-to-ref-image> --boxes <path-t
 ![screenshot](img/reprojected_box.png)
 ### Similarity Scores
 ![screenshot](img/similar_scores.png)
+
+## Build
+```bash
+docker buil -t sim .
+docker tun sim
+```
+
+## Usage
+### Perforn Similarity Test
+```bash
+Invoke-RestMethod -Uri "http://localhost:8000/run" -Method Post -Body {"img1": "img/ref.png", "img2": "img/test.png"} -ContentType "application/json"
+```
