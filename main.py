@@ -22,30 +22,12 @@ def compare_similarity(img1, img2):
     sim = simr.calculate_similarity(f_img1, f_img2)
     return f"(Image 1 vs Image 2): {sim:.4f}"
 
-@app.post("/reproj")
+@app.post("/sim")
 def run(data: runOptions):
     result = compare_similarity(data.img1, data.img2)     
     return {"result": result}
 
-@app.post("/sim")
+@app.post("/sam")
 def run(data: runOptions):
     result = sam.run(img=data.img)
-    
-    pts_src = np.array([
-        [result[0]-(result[2]/2), result[0]-(result[1]/2)],   # Top-left
-        [result[0]+(result[2]/2), result[0]-(result[1]/2)],  # Top-right
-        [result[0]+(result[2]/2), result[0]+(result[1]/2)], # Bottom-right
-        [result[0]-(result[2]/2), result[0]+(result[1]/2)]  # Bottom-left
-        ], dtype="float32")
-    
-    pts_dst = np.array([
-        [0, 0],         # Top-left
-        [data.tgt_width, 0],  # Top-right
-        [data.tgt_width, data.tgt_height], # Bottom-right
-        [0, data.tgt_height]  # Bottom-left
-    ], dtype="float32")
-    
-    matrix = cv2.getPerspectiveTransform(pts_src, pts_dst)
-    warped_image = cv2.warpPerspective(data.img, matrix, (data.tgt_width, data.tgt_height))
-    cv2.imwrite(f'output.jpg', warped_image)
     return {"result": result}

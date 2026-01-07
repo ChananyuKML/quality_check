@@ -2,10 +2,14 @@
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
+import argparse
 
+parser = argparse.ArgumentParser(description="Compare the visual similarity of three images using ResNet50.")
 
+parser.add_argument("image", default="test_output/pc.jpg",help="Path to the first image file.")
+args = parser.parse_args()
 # Step 3: Read the uploaded image
-image_path = "test_output/pc.jpg"
+image_path = f"{args.image}"
 image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
 # Step 4: Apply Gaussian Blur to reduce noise
